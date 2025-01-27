@@ -26,10 +26,25 @@ const submitInquiry = async (req, res) => {
 
         // Email content and structure
         const mailOptions = {
-            from: email,
-            to: 'rental-support@example.com', 
-            subject: `Rental Inquiry for ${productName} from ${name}`,
-            text: `You have received a new rental inquiry for ${productName} from ${name} (${email}, ${phone}):\n\nRental Date: ${rentalDate}\nMessage: ${message}`
+            from: 'wordpress@onthegomedicalsupply.com', // Sender email
+            to: 'admin@onthegomedicalsupply.com', // Replace with the recipient's email
+            subject: `Product Inquiry: ${productName}`,
+            text: `
+-------- Original Message --------
+Subject: Product Inquiry: ${productName}
+Date: ${new Date().toISOString()}
+From: ${email}
+To: admin@onthegomedicalsupply.com
+
+You have received a new inquiry for the product:
+Product Name: ${productName}
+Name: ${name}
+Email: ${email}
+Phone: ${phone}
+Rental Start Date: ${rentalDate}
+Message:
+${message}
+            `.trim() // Removes extra spaces around the text
         };
 
         // Send the email
@@ -40,8 +55,8 @@ const submitInquiry = async (req, res) => {
 
         res.status(200).json({
             message: 'Your inquiry has been submitted successfully.',
-            emailPreviewURL,
-            productName 
+            emailPreviewURL, // Return the preview URL for testing
+            productName // Include productName in the response
         });
     } catch (error) {
         console.error('Error sending email:', error);
