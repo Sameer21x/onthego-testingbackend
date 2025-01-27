@@ -1,12 +1,12 @@
 const nodemailer = require('nodemailer');
 
 const submitInquiry = async (req, res) => {
-    const { name, email, phone, rentalDate, message } = req.body;
+    const { name, email, phone, rentalDate, message, productName } = req.body;
 
     // Validate input fields
-    if (!name || !email || !phone || !rentalDate || !message) {
+    if (!name || !email || !phone || !rentalDate || !message || !productName) {
         return res.status(400).json({
-            message: 'Name, email, phone, rental date, and message are required.'
+            message: 'Name, email, phone, rental date, message, and product name are required.'
         });
     }
 
@@ -26,10 +26,10 @@ const submitInquiry = async (req, res) => {
 
         // Email content and structure
         const mailOptions = {
-            from: email, // Sender email
-            to: 'rental-support@example.com', // Replace with the rental inquiries email
-            subject: `Rental Inquiry from ${name}`,
-            text: `You have received a new rental inquiry from ${name} (${email}, ${phone}):\n\nRental Date: ${rentalDate}\nMessage: ${message}`
+            from: email,
+            to: 'rental-support@example.com', 
+            subject: `Rental Inquiry for ${productName} from ${name}`,
+            text: `You have received a new rental inquiry for ${productName} from ${name} (${email}, ${phone}):\n\nRental Date: ${rentalDate}\nMessage: ${message}`
         };
 
         // Send the email
@@ -40,7 +40,8 @@ const submitInquiry = async (req, res) => {
 
         res.status(200).json({
             message: 'Your inquiry has been submitted successfully.',
-            emailPreviewURL // Return the preview URL for testing
+            emailPreviewURL,
+            productName 
         });
     } catch (error) {
         console.error('Error sending email:', error);
