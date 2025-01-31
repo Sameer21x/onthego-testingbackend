@@ -26,9 +26,9 @@ const submitInquiry = async (req, res) => {
 
         // Email content and structure
         const mailOptions = {
-            from: 'wordpress@onthegomedicalsupply.com', // Sender email
+            from: email, // Sender email
             to: 'admin@onthegomedicalsupply.com', // Replace with the recipient's email
-            subject: `Product Inquiry: ${productName}`,
+            subject: `Customer Inquiry: ${productName}`,
             text: `
 -------- Original Message --------
 Subject: Product Inquiry: ${productName}
