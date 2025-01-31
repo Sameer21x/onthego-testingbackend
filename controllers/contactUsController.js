@@ -14,7 +14,7 @@ const contactUs = async (req, res) => {
       const testAccount = await nodemailer.createTestAccount();
   
       const transporter = nodemailer.createTransport({
-        host: 'smtp.onthegomedicalsupply.com',
+        host: 'smtp.sv96.ifastnet.com',
         port: 587,
         auth: {
           user: "admin@onthegomedicalsupply.com",
