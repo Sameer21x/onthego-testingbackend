@@ -16,11 +16,11 @@ const submitInquiry = async (req, res) => {
 
         // Set up Nodemailer transport using Ethereal
         const transporter = nodemailer.createTransport({
-            host: 'smtp.ethereal.email',
-            port: 587,
+            host: 'mail.onthegomedicalsupply.com',
+            port: 465,
             auth: {
-                user: "micaela.baumbach30@ethereal.email",
-                pass: "sE8yYSn6ztQduPQqdq"
+              user: "admin@onthegomedicalsupply.com",
+              pass: "2U+#^?JA-76q"
             }
         });
 
