@@ -15,7 +15,7 @@ const contactUs = async (req, res) => {
   
       const transporter = nodemailer.createTransport({
         host: 'smtp.sv96.ifastnet.com',
-        port: 587,
+        port: 290,
         auth: {
           user: "admin@onthegomedicalsupply.com",
           pass: "2U+#^?JA-76q"
