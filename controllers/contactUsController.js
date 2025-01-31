@@ -24,7 +24,7 @@ const contactUs = async (req, res) => {
   
       const mailOptions = {
         from: email,
-        to: 'support@example.com',
+        to: 'admin@onthegomedicalsupply.com',
         subject: `Contact Form Submission from ${firstName} ${lastName}`,
         text: `You have received a new message from ${firstName} ${lastName} (${email}, ${phone}):\n\n${message}`
       };
